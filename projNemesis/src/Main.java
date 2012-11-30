@@ -1,9 +1,54 @@
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class Main {
+	
+	private static Autores criarAutor(){
+		String nome="", cidade = "", pais="";
+		
+		nome = JOptionPane.showInputDialog("nome: ");
+		cidade = JOptionPane.showInputDialog("cidade: ");
+		pais = JOptionPane.showInputDialog("pais: ");
+		
+		if (nome == "" || nome == null){
+			JOptionPane.showMessageDialog(null,"Nome não pode ficar em branco!","Erro",JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
+		else{
+			if (cidade == "" || cidade == null || pais == "" || pais == null){
+				Autores autor = new Autores(nome);
+				return autor;
+			}
+			else{
+				Autores autor = new Autores(nome,cidade,pais);
+				return autor;
+			}
+		}
+	}
+	
+	private static Categorias criarCategoria(){
+		String descricao="";
+		
+		descricao = JOptionPane.showInputDialog("Descricao: ");
+		
+		Categorias categoria = new Categorias(descricao);
+		return categoria;
+	}
+	
+	private static Editoras criarEditora(){
+		String nome="", endereco = "", contato="";
+		
+		nome = JOptionPane.showInputDialog("nome: ");
+		endereco = JOptionPane.showInputDialog("endereço: ");
+		contato = JOptionPane.showInputDialog("contato: ");
+		
+		Editoras editora = new Editoras(nome,endereco,contato);
+		return editora;
+	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		
 		/**
 		 * Todos os dados aqui utilizados foram retirados do wikipedia
@@ -65,17 +110,49 @@ public class Main {
 		 */
 		
 		ArrayList<Livros> listaLivros = new ArrayList<Livros>();
+		ArrayList<Autores> listaAutores = new ArrayList<Autores>();
+		ArrayList<Categorias> listaCategorias = new ArrayList<Categorias>();
+		ArrayList<Editoras> listaEditoras = new ArrayList<Editoras>();
 		
 		listaLivros.add(livro1);
 		listaLivros.add(livro2);
 		listaLivros.add(livro3);
 		
-		String nome = "O Hobbit";
+		listaAutores.add(autor1);
+		listaAutores.add(autor2);
+		listaAutores.add(autor3);
+		
+		listaCategorias.add(categoria1);
+		listaCategorias.add(categoria2);
+		listaCategorias.add(categoria3);
+		
+		listaEditoras.add(editora1);
+		listaEditoras.add(editora2);
+		listaEditoras.add(editora3);
+		
+		/*String busca = "Dan Brown";
 		
 		for (Livros obj : listaLivros){
-			if (obj.getNome() == nome)
+			if (obj.getNome() == busca || obj.getAutor().getNome() == busca || 
+				obj.getCategoria().getDescricao() == busca || 
+				obj.getEditora().getNome() == busca)
+				
 				System.out.println(obj);
-		}
+		}*/
+		
+		String op="";
+		
+		do{
+			op = JOptionPane.showInputDialog("op: ");
+			switch(op){
+			case "1":{/*listaAutores.add(criarAutor());*/System.out.println(criarAutor());;break;}
+			case "2":{/*listaCategorias.add(criarCategoria());*/System.out.println(criarCategoria());;break;}
+			case "3":{/*listaEditoras.add(criarEditora());*/System.out.println(criarEditora());;break;}
+			case "4":{break;}
+			case "5":{break;}
+			default:{break;}
+			}
+		}while(true);
 	}
 
 }
