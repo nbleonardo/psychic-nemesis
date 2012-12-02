@@ -162,9 +162,10 @@ public class Main {
 		busca = JOptionPane.showInputDialog("Buscar: ");
 		
 		for (Livros obj : listaLivros){
-			if (obj.getNome() == busca || obj.getAutor().getNome() == busca || 
-				obj.getCategoria().getDescricao() == busca || 
-				obj.getEditora().getNome() == busca)
+			if (obj.getNome().equals(busca) || 
+				obj.getAutor().getNome().equals(busca) || 
+				obj.getCategoria().getDescricao().equals(busca)|| 
+				obj.getEditora().getNome().equals(busca))
 				
 				return obj;
 		}
