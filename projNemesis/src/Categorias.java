@@ -13,6 +13,10 @@ public class Categorias {
 	}
 
 	public void setDescricao(String descricao) {
+		if (descricao == null) {
+			throw new IllegalArgumentException("A descrição não pode ser nulo!");
+		}
+		
 		this.descricao = descricao;
 	}
 

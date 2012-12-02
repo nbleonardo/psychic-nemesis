@@ -24,6 +24,10 @@ public class Livros {
 	}
 
 	public void setNome(String nome) {
+		if (nome == null) {
+			throw new IllegalArgumentException("O nome não pode ser nulo!");
+		}
+		
 		this.nome = nome;
 	}
 
