@@ -156,8 +156,9 @@ public class Main {
 		return null;
 	}
 	
-	private static Livros buscarLivro(){
+	private static ArrayList<Livros> buscarLivro(){
 		String busca="";
+		ArrayList<Livros> lista = new ArrayList<Livros>();
 		
 		busca = JOptionPane.showInputDialog("Buscar: ");
 		
@@ -167,11 +168,15 @@ public class Main {
 				obj.getCategoria().getDescricao().equals(busca)|| 
 				obj.getEditora().getNome().equals(busca))
 				
-				return obj;
+				lista.add(obj);
 		}
-
-		JOptionPane.showMessageDialog(null,"Livro não encontrado!","Erro",JOptionPane.ERROR_MESSAGE);
-		return null;
+		
+		if (lista.isEmpty()){
+			JOptionPane.showMessageDialog(null,"Livro não encontrado!","Erro",JOptionPane.ERROR_MESSAGE);
+			return null;
+		}
+		
+		return lista;
 	}
 
 	public static void main(String[] args){
